@@ -1,0 +1,126 @@
+@import ".././utils/variables";
+@import ".././utils/mixins";
+
+.best{
+  margin-right: auto;
+  margin-left: auto;
+  height: 40vh;
+  width: 90vw;
+  min-width: 400px; min-height: 350px;  
+  max-width: 1500px; max-height: 400px;
+  background-image: url(./Images/background.jpg);
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  border:2px solid $second-color;
+  border-radius: 20px 20px;
+}
+
+.best-movie{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.best-title {
+  font-family: "Arial Black";
+  text-align: center;
+  height: 10vh;
+  width: 100%;
+}
+    
+.best-description {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  position: relative;
+  top: -2vh;
+}
+  
+  .description-text {
+    height: 8vh;
+    width: 50%;
+    margin-right: 5vw;
+    min-width: 150px; min-height: 200px;  
+    max-width: 1000px; max-height: 250px;  
+    align-items: flex-end;
+    display: table;
+  }
+  .description-text p {
+    width: 60%;
+    margin-right: 20px;
+    text-align: justify;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .bestFront{
+    width: 35vh; height: 50vh;
+    max-width: 200px; max-height: 300px;
+    min-width: 150px; min-height: 250px;
+    object-fit: contain; 
+  }
+
+.buttons{
+  width: 100%;
+  max-width: 964px;
+  display: flex;
+  position: relative;
+  bottom: 4vh;
+}
+  
+  .play{
+    position: relative;
+    left: 23vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include second-perimeter;
+    @include buttons-border;
+    background-color: $info-background;
+    width: 120px;
+    height: $button-height;
+    color: $first-color;
+    font-weight: bold;
+  }
+
+  .play p {
+      width: auto;
+      object-fit: contain;
+      position: relative;
+      left: 10%;
+      font-size: $button-police;
+  }
+  
+  .play img {
+      width: 20px; height: 20px;
+      object-fit: contain;
+      position: relative;
+      right: 10%;
+  }
+        
+  .infos {
+    position: relative;
+    left: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include second-perimeter;
+    @include buttons-border;
+    background-color: $info-background;
+    width: 120px;
+    height: $button-height;
+    color: $first-color;
+    font-weight: bold;
+  }
+
+  .infos p {
+      width: auto;
+      object-fit: contain;
+      font-size: $button-police;
+      padding: auto;
+      flex-wrap: nowrap;
+  }

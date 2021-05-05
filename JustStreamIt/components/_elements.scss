@@ -1,0 +1,43 @@
+@import ".././utils/variables";
+@import ".././utils/mixins";
+
+.bestMovie__buttons__play {
+	object-position: relative;
+ 	display: flex;
+	justify-content: center;
+    align-items: center;
+	@include second-perimeter;
+ 	@include buttons-border;
+	background-color: $play-background;
+	width: 100px;
+	height: $button-height;
+	img {
+		width: 20px; height: 20px;
+		object-fit: contain;
+	}
+	p {
+		width: auto;
+		object-fit: contain;
+		font-size: $button-police;
+		padding: 5px 5px 5px 5px;
+		align-self: center;
+	}
+}
+
+.bestMovie__buttons__infos {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	@include second-perimeter;
+	@include buttons-border;
+	background-color: $info-background;
+	width: 120px;
+	height: $button-height;
+	p {
+		width: auto;
+		object-fit: contain;
+		font-size: $button-police;
+		padding: auto;
+		flex-wrap: nowrap;
+	}
+}

@@ -117,38 +117,10 @@ function fetchBest(){
 		bestImg[0].src = data["results"][0]["image_url"];
 	})
 }
-
-
 fetchBest()
 
-/*function carrouselInfos (){
-	let best = document.getElementsByClassName("best-movies");
-	console.log(best);
-	let title = best[0].getElementsByClassName("under-title");
-	console.log(title);
-	let date = best [0].getElementsByClassName("product-date");
-	let img = best[0].getElementsByClassName("bestFront");
 
-	let i = 0;
-	if (i< 4){
-		fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
-		.then(response => response.json())
-		.then(data => {
-			for (i=0; i<4; i++){ //Bonne manière de faire ?//
-			
-				title[i].innerHTML = data["results"][i+1]["title"];
-				date[i].innerHTML = data["results"][i+1]["year"];
-			//img[i].src = data["results"][i]["image_url"];//
-			}
-			title[i].innerHTML = data["results"][i+1]["title"];
-			date[i].innerHTML = data["results"][i+1]["year"];
-			//img[i].src = data["results"][i]["image_url"];//
-	i += 4
-}
-
-carrouselInfos()*/
-
-/*function coucou(){
+function bestCarrousel(){
 	let best = document.getElementsByClassName("best-movies");
 	let title = best[0].getElementsByClassName("under-title");
 	let date = best [0].getElementsByClassName("product-date");
@@ -156,30 +128,37 @@ carrouselInfos()*/
 	console.log(date[0]);
 
 	for (i=0; i<2; i++){
-		if (i = 0){
-			fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
-			.then(response => response.json())
-			.then(data => {
-				for (i=0; i<5; i++){
-					console.log(i)
-								
-					console.log(title[i].innerHTML = data["results"][i+1]["title"])
-					date[i].innerHTML = data["results"][i+1]["year"];
-					//img[i].src = data["results"][i]["image_url"];//
-				}
-			})
-		}
+		console.log(i);
+		if (i == 0){
+			console.log("i est nul");
+            fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
+            .then(response => response.json())  
+            .then(data => {
+                console.log(data)
+                let h = 1
+                for (j=0; j<4; j++){
+                    title[j].innerHTML = data["results"][h]["title"];
+					date[j].innerHTML = data["results"][h]["year"];
+					img[j].src = data["results"][h]["image_url"];
+                    h += 1;
+                }
+            })
+        }
 		else {
-			fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=2")
-			.then(response => response.json())
-			.then(data => {
-				for (i=0; i<3; i++){			
-				title[i+4].innerHTML = data["results"][i]["title"];
-				date[i+4].innerHTML = data["results"][i]["year"];
-				//img[i].src = data["results"][i]["image_url"];//
-				}
-			})
-		}
-	}
+			console.log("i est un nombre entier different de 0");
+            fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=2")
+            .then(response => response.json())  
+            .then(data => {
+                console.log(data)
+                let m = 4
+                for (k=0; k<3; k++){
+                    title[m].innerHTML = data["results"][k]["title"];
+				    date[m].innerHTML = data["results"][k]["year"];
+				    img[m].src = data["results"][k]["image_url"];
+                    m += 1;
+                }
+            })
+	    }
+    }
 }
-coucou();*/
+bestCarrousel();

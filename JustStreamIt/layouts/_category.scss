@@ -110,20 +110,37 @@ header {
 .detail-box{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  padding: 10px 20px;
   box-sizing: border-box;
   width: 250px;
-  height: 70px;
+  height: 60px;
   overflow: hidden;
   text-align: center;
   color: $first-color;
 }
-.under-title{
-  font-size: 1.2em;
-  font-weight: bold;
+.type{
+  display: flex;
+  vertical-align: middle;
 }
+
+.under-title{
+  font-weight: bold;
+  margin: 4%;
+  background-color: yellow;
+  vertical-align: middle;
+}
+.movie-date{
+  display: table;
+}
+.product-date{
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  margin: 2%;
+  background-color: blue;
+}
+
 .overlay{
   position: absolute;
   top: 50%;

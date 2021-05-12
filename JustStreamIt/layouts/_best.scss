@@ -25,9 +25,12 @@
 }
 .best-title {
   font-family: "Arial Black";
+  font-size: 1.8em;
   text-align: center;
   height: 10vh;
   width: 100%;
+  position: relative;
+  top: 4vh;
 }
     
 .best-description {
@@ -52,7 +55,10 @@
   .description-text p {
     width: 60%;
     margin-right: 20px;
-    text-align: justify;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 8vh;
     display: table-cell;
     vertical-align: middle;
   }
@@ -69,7 +75,7 @@
   max-width: 964px;
   display: flex;
   position: relative;
-  bottom: 4vh;
+  bottom: 6vh;
 }
   
   .play{

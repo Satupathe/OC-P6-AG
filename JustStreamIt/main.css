@@ -55,6 +55,8 @@
           align-items: center;
   list-style-type: none;
   color: black;
+  position: relative;
+  right: 12%;
 }
 
 .header__menu__home {
@@ -125,9 +127,12 @@
 
 .best-title {
   font-family: "Arial Black";
+  font-size: 1.8em;
   text-align: center;
   height: 10vh;
   width: 100%;
+  position: relative;
+  top: 4vh;
 }
 
 .best-description {
@@ -164,7 +169,10 @@
 .description-text p {
   width: 60%;
   margin-right: 20px;
-  text-align: justify;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 8vh;
   display: table-cell;
   vertical-align: middle;
 }
@@ -187,7 +195,7 @@
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  bottom: 4vh;
+  bottom: 6vh;
 }
 
 .play {
@@ -349,7 +357,8 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
+  width: 94%;
+  margin: auto;
 }
 
 .category h2 {
@@ -388,7 +397,7 @@ header {
   width: 100%;
 }
 
-.psycho-movies {
+.animation-movies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -442,7 +451,7 @@ header {
   background-color: PURPLE;
 }
 
-.carrousel .psycho-movies-product {
+.carrousel .horror-movies-product {
   height: 90%;
   margin: 0 20px  0 0;
   border-radius: 20px;
@@ -453,12 +462,12 @@ header {
   background-color: PURPLE;
 }
 
-.carrousel .horror-movies-product {
+.carrousel .animation-movies-product {
   height: 90%;
   margin: 0 20px  0 0;
   border-radius: 20px;
   position: relative;
-  left: 0;
+  left: 0px;
   -webkit-transition: 0.8s;
   transition: 0.8s;
   background-color: PURPLE;

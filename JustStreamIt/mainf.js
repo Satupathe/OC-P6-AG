@@ -263,23 +263,254 @@ function actionCarrousel(){
 actionCarrousel();
 
 var infoBtns = document.querySelectorAll('.infos-btn');
+var arr = Array.prototype.slice.call(infoBtns);
 var modalBackground = document.getElementById('modal-background');
 var closeBtn = document.getElementById('close-btn');
 
+var modalTitle = document.getElementsByClassName("modal-title");
+var modalgenre = document.getElementsByClassName("modal-genres");
+var modalDate = document.getElementsByClassName("modal-date");
+var modalRate = document.getElementsByClassName("modal-rate");
+var modalImdb = document.getElementsByClassName("modal-imdb");
+var modalDuration = document.getElementsByClassName("modal-duration");
+var modalDirector = document.getElementsByClassName("modal-director");
+var modalActor = document.getElementsByClassName("modal-actor");
+var modalCountry = document.getElementsByClassName("modal-country");
+var modalBoxOffice = document.getElementsByClassName("modal-boxOffice");
+var modalImg = document.getElementsByClassName("modal-img");
+var modalDescription = document.getElementsByClassName("modal-Description");
+
 infoBtns.forEach(function (trigger){
 	trigger.addEventListener('click', function(event) {
+		index = arr.indexOf(trigger)
+		console.log(index);
 		event.preventDefault();
 		modalBackground.style.display = 'block';
-	})
+		let movieId = "";
+		let i = "";
+		if (index < 7) {
+			if (index <4){//penser à rajouter le +1 du décalage//
+				i = index + 1;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+			else {
+				i = index-4;
+				console.log("C1p2");
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=2")
+				.then(response => response.json())  
+				.then(data => {
+					console.log(i);
+					console.log(data);
+					movieId = data["results"][i]["id"];
+					console.log(movieId);
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+		}
+		else if (index >= 7 && index < 14){
+			
+			if (index < 12){
+				i = index - 7;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=1")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+			else {
+				i = index - 12;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=2")
+				.then(response => response.json())  
+				.then(data => {
+					console.log(data);
+					console.log(i);
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+		}
+		else if (index >= 14 && index < 21){
+			
+			if (index < 19){
+				i = index - 14;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=1")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+					
+				})
+			}
+			else {
+				i = index - 19;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=2")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+
+
+		}
+		else {
+			
+			if (index < 26){
+				i = index - 21;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=1")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+			else {
+				i = index - 26;
+				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=2")
+				.then(response => response.json())  
+				.then(data => {
+					movieId = data["results"][i]["id"];
+					fetch("http://localhost:8000/api/v1/titles/"+movieId)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						modalTitle[0].innerHTML = data["title"];
+						modalgenre[0].innerHTML = data["genres"];
+						modalDate[0].innerHTML = data["year"];
+						modalRate[0].innerHTML = data["rated"];
+						modalImdb[0].innerHTML = data["imdb_score"];
+						modalDuration[0].innerHTML = data["duration"];
+						modalDirector[0].innerHTML = data["directors"];
+						modalActor[0].innerHTML = data["actors"];
+						modalCountry[0].innerHTML = data["countries"];
+						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+					})
+				})
+			}
+		}
+	});
 
 	closeBtn.addEventListener('click', function() {
-		modalBackground.style.display = 'none';
-	  });
-	  
+	modalBackground.style.display = 'none';
+	});
+	
 	window.addEventListener('click', function(event) {
 		if (event.target === modalBackground) {
-		  modalBackground.style.display = 'none';
+			modalBackground.style.display = 'none';
 		}
-	  });
+	});
 });
+
 

@@ -189,18 +189,23 @@
 }
 
 .buttons {
-  width: 100%;
+  width: 70%;
   max-width: 964px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   position: relative;
   bottom: 6vh;
 }
 
+.play:hover {
+  background-color: #f15fa3;
+}
+
 .play {
-  position: relative;
-  left: 23vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,13 +217,13 @@
           align-items: center;
   margin: 5px;
   padding: 5px;
-  border: 2px #e60073 solid;
-  border-radius: 20px/20px;
-  background-color: #a6a6a6;
-  width: 120px;
-  height: 20px;
-  color: #ffffff;
+  background-color: white;
+  width: 140px;
+  height: 30px;
   font-weight: bold;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
 }
 
 .play p {
@@ -239,9 +244,12 @@
   right: 10%;
 }
 
+.play:hover {
+  background-color: #f15fa3;
+  color: white;
+}
+
 .infos {
-  position: relative;
-  left: 30vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -253,13 +261,13 @@
           align-items: center;
   margin: 5px;
   padding: 5px;
-  border: 2px #e60073 solid;
-  border-radius: 20px/20px;
-  background-color: #a6a6a6;
-  width: 120px;
-  height: 20px;
-  color: #ffffff;
+  background-color: white;
+  width: 140px;
+  height: 30px;
   font-weight: bold;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
 }
 
 .infos p {
@@ -270,6 +278,11 @@
   padding: auto;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+}
+
+.infos:hover {
+  background-color: #f15fa3;
+  color: white;
 }
 
 body {
@@ -364,13 +377,13 @@ td {
 }
 
 .modal-category {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: bold;
   border: 2px solid #e60073;
   border-radius: 30px;
   border-spacing: 0px;
   margin: 0 2% 0 2%;
-  height: 5vh;
+  height: 30px;
   background-color: #ffe6e6;
   color: #cc0000;
 }
@@ -463,60 +476,58 @@ header {
   background-color: black;
 }
 
+@media screen and (min-width: 1400px) {
+  .category h2 {
+    text-align: center;
+  }
+}
+
 .best-movies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 
 .horror-movies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 
 .animation-movies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 
 .action-movies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 
 .carrousel {
@@ -542,7 +553,7 @@ header {
   left: 0;
   -webkit-transition: 0.8s;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 
 .carrousel .horror-movies-product {
@@ -553,7 +564,7 @@ header {
   left: 0;
   -webkit-transition: 0.8s;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 
 .carrousel .animation-movies-product {
@@ -564,7 +575,7 @@ header {
   left: 0px;
   -webkit-transition: 0.8s;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 
 .carrousel .action-movies-product {
@@ -575,7 +586,7 @@ header {
   left: 0;
   -webkit-transition: 0.8s;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 
 .slide-img {

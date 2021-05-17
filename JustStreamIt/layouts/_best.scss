@@ -71,26 +71,28 @@
   }
 
 .buttons{
-  width: 100%;
+  width: 70%;
   max-width: 964px;
   display: flex;
+  justify-content: space-evenly;
   position: relative;
   bottom: 6vh;
 }
+.play:hover{
+    background-color: #f15fa3;
+}
   
   .play{
-    position: relative;
-    left: 23vw;
     display: flex;
     justify-content: center;
     align-items: center;
     @include second-perimeter;
-    @include buttons-border;
-    background-color: $info-background;
-    width: 120px;
+    background-color: white;
+    width: 140px;
     height: $button-height;
-    color: $first-color;
     font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
   }
 
   .play p {
@@ -107,20 +109,24 @@
       position: relative;
       right: 10%;
   }
-        
+
+  .play:hover{
+    background-color: #f15fa3;
+    color: white;
+  }
+  
+  
   .infos {
-    position: relative;
-    left: 30vw;
     display: flex;
     justify-content: center;
     align-items: center;
     @include second-perimeter;
-    @include buttons-border;
-    background-color: $info-background;
-    width: 120px;
+    background-color: white;
+    width: 140px;
     height: $button-height;
-    color: $first-color;
     font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
   }
 
   .infos p {
@@ -130,3 +136,9 @@
       padding: auto;
       flex-wrap: nowrap;
   }
+
+  .infos:hover{
+    background-color: #f15fa3;
+    color: white;
+}
+  

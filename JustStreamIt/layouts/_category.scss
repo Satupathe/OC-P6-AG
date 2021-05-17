@@ -29,29 +29,42 @@ header {
   text-decoration: underline;
   background-color: black;
 }
+
+@media screen and (min-width: 1400px)
+{
+    .category h2
+    {
+        text-align: center;
+    }
+}
+
 .best-movies {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 .horror-movies {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 .animation-movies {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 .action-movies {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  margin: auto;
   width: 100%;
+  max-width: 1175px;
 }
 .carrousel{
   display: flex;
@@ -68,7 +81,7 @@ header {
   position: relative;
   left: 0;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 .carrousel .horror-movies-product{
   height: 90%;
@@ -77,7 +90,7 @@ header {
   position: relative;
   left: 0;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 .carrousel .animation-movies-product{
   height: 90%;
@@ -86,7 +99,7 @@ header {
   position: relative;
   left: 0px;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 .carrousel .action-movies-product{
   height: 90%;
@@ -95,7 +108,7 @@ header {
   position: relative;
   left: 0;
   transition: 0.8s;
-  background-color: PURPLE;
+  background-color: #732673;
 }
 .slide-img {
   height: 300px;
@@ -219,3 +232,4 @@ button:hover{
 .left-button{
   margin-right: 10px;
 }
+

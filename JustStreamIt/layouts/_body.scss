@@ -26,7 +26,7 @@ body {
   transform: translate(-50%, -50%);
   width: 70vw;
   max-width: 1000px;
-  height: 70vh;
+  height: 95vh;
   max-height: 550px;
   padding: 10px 20px;
   border-radius: 20px;
@@ -39,7 +39,6 @@ body {
   font-size: 0.8em;
   animation-name: animatemodal;
   animation-duration: 0.4s;
-  background-color: blue;
 }
 
 #modal h2 {
@@ -52,57 +51,48 @@ body {
 
 .modal-box {
   display: flex;
-  justify-content: space-around;
-  background-color: yellow;
+  justify-content: center;
   width: 100%;
   height: 80%;
   border-radius: 20px;
   border: 2px solid $third-color;
   font-size: 0.9em;
+  padding: 10px;
+  background-color: $header-background;
 }
 
-.modal-infos1 {
-  background-color: green;
-  width: 25%;
-}
-.modal-infos1 div {
-  display: flex;
-  flex-direction: column;
-  height: 15%;
-  background-color: white;
+table{
+  border-collapse: separate;
+  width: 65%;
+  table-layout: fixed;
+  border-spacing: 0 1% 0 1%;
 }
 
-.modal-infos2 {
-  background-color: purple;
-  width: 40%;
-}
-.modal-infos2 div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 15%;
-  background-color: white;
-  margin: 0;
+
+tr {
+  font-size: 0.9em;
   padding: 0;
 }
-.modal-infos2 div h3{
-  background-color: blue;
-  height: 35%;
-  margin: 0;
-  padding: 0;
+td{
+  padding: 0 2% 0 2%;
 }
 
-.modal-infos2 div p{
-  background-color: red;
-  position: relative;
-  top: 5px;
-  margin: 0px 20px;
-  padding: 0;
+.modal-category{
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid $third-color;
+  border-radius: 30px;
+  border-spacing: 0px;
+  margin: 0 2% 0 2%;
+  height: 5vh;
+  background-color: $header-background;
+  color: $second-color;
 }
 
 .modal-img{
   width: 20%;
-  background-color: #ff0000;
+  position: relative;
+  left: 4%;
 }
 .modal-img img {
   width: 100%;

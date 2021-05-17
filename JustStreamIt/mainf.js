@@ -278,7 +278,7 @@ var modalActor = document.getElementsByClassName("modal-actor");
 var modalCountry = document.getElementsByClassName("modal-country");
 var modalBoxOffice = document.getElementsByClassName("modal-boxOffice");
 var modalImg = document.getElementsByClassName("modal-img");
-var modalDescription = document.getElementsByClassName("modal-Description");
+var modalDescription = document.getElementsByClassName("modal-description");
 
 infoBtns.forEach(function (trigger){
 	trigger.addEventListener('click', function(event) {
@@ -289,7 +289,7 @@ infoBtns.forEach(function (trigger){
 		let movieId = "";
 		let i = "";
 		if (index < 7) {
-			if (index <4){//penser à rajouter le +1 du décalage//
+			if (index <4){
 				i = index + 1;
 				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
 				.then(response => response.json())  
@@ -309,6 +309,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -337,6 +338,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -364,6 +366,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -390,6 +393,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -417,6 +421,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 					
@@ -442,6 +447,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -471,6 +477,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})
@@ -495,6 +502,7 @@ infoBtns.forEach(function (trigger){
 						modalActor[0].innerHTML = data["actors"];
 						modalCountry[0].innerHTML = data["countries"];
 						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+						modalDescription[0].innerHTML = data["description"];
 						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
 					})
 				})

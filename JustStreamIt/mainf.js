@@ -12,97 +12,55 @@ let movePer = 25;
 let maxMove = 100;
 let minMove = -25;
 
-let right_mover_best = ()=>{
-	l = l + movePer;
-	if (best == 1){l = 0;}
-	for(const i of best)
-	{
-		if (l==maxMove) {l=0;}
-		if (l > maxMove){l = l + movePer;}
-		i.style.left = '-' + l + '%';
+let right_mover = function(index, category){
+	let move = 0;
+	if (index = "l") {move = l}
+	else if (index = "m") {move = m}
+	else if (index = "n") {move = n}
+	else if(index = "o") {move = o}
+	move = move + movePer;
+
+	for(const i of category){
+		if (move==maxMove) {move=0;}
+		i.style.left = '-' + move + '%';	
 	}
-}
-let left_mover_best = ()=>{
-	l = l - movePer;
-	if(best == 1){l = 0;}
-	for(const i of best)
-	{
-		if (l <= minMove) {l=75}
-		if (l > maxMove){l = l - movePer;}
-		i.style.left = '-' + l + '%';
-	}
+	
+	if (index = "l") {l = move}
+	else if (index = "m") {m = move}
+	else if (index = "n") {n = move}
+	else if(index = "o") {o = move}
 }
 
-let right_mover_horror = ()=>{
-	m = m + movePer;
-	if (horror == 1){m = 0;}
-	for(const i of horror)
-	{
-		if (m==maxMove) {m=0;}
-		if (m > maxMove){m = m + movePer;}
-		i.style.left = '-' + m + '%';
+let left_mover = function(index, category) {
+	let move = 0
+	if (index = "l") {move = l}
+	else if (index = "m") {move = m}
+	else if (index = "n") {move = n}
+	else if(index = "o") {move = o}
+	move = move - movePer;
+	
+	for (const i of category){
+		if (move <= minMove) {move= 75;}
+		i.style.left = "-" + move + "%";
 	}
-}
-let left_mover_horror = ()=>{
-	m = m - movePer;
-	if(horror == 1){m = 0;}
-	for(const i of horror)
-	{
-		if (m <= minMove) {m=75}
-		if (m > maxMove){m = m - movePer;}
-		i.style.left = '-' + m + '%';
-	}
+
+	if (index = "l") {l = move}
+	else if (index = "m") {m = move}
+	else if (index = "n") {n = move}
+	else if(index = "o") {o = move}
 }
 
-let right_mover_animation = ()=>{
-	n = n + movePer;
-	if (animation == 1){n = 0;}
-	for(const i of animation)
-	{
-		if (n==maxMove) {n=0;}
-		if (n > maxMove){n = n + movePer;}
-		i.style.left = '-' + n + '%';
-	}
-}
-let left_mover_animation = ()=>{
-	n = n - movePer;
-	if(animation == 1){n = 0;}
-	for(const i of animation)
-	{
-		if (n <= minMove) {n=75}
-		if (n > maxMove){n = n - movePer;}
-		i.style.left = '-' + n + '%';
-	}
-}
+rightBtn[0].onclick = ()=>{right_mover("l", best);};
+leftBtn[0].onclick = ()=>{left_mover("l", best);};
+rightBtn[1].onclick = ()=>{right_mover("m", horror);};
+leftBtn[1].onclick = ()=>{left_mover("m", horror);};
+rightBtn[2].onclick = ()=>{right_mover("n", animation);};
+leftBtn[2].onclick = ()=>{left_mover("n", animation);};
+rightBtn[3].onclick = ()=>{right_mover("o", action);};
+leftBtn[3].onclick = ()=>{left_mover("o", action);};
 
-let right_mover_action = ()=>{
-	o = o + movePer;
-	if (action == 1){o = 0;}
-	for(const i of action)
-	{
-		if (o==maxMove) {o=0;}
-		if (o > maxMove){o = o + movePer;}
-		i.style.left = '-' + o + '%';
-	}
-}
-let left_mover_action = ()=>{
-	o = o - movePer;
-	if(action == 1){o = 0;}
-	for(const i of action)
-	{
-		if (o <= minMove) {o=75}
-		if (o > maxMove){o = o - movePer;}
-		i.style.left = '-' + o + '%';
-	}
-}
-rightBtn[0].onclick = ()=>{right_mover_best();}
-leftBtn[0].onclick = ()=>{left_mover_best();}
-rightBtn[1].onclick = ()=>{right_mover_horror();}
-leftBtn[1].onclick = ()=>{left_mover_horror();}
-rightBtn[2].onclick = ()=>{right_mover_animation();}
-leftBtn[2].onclick = ()=>{left_mover_animation();}
-rightBtn[3].onclick = ()=>{right_mover_action();}
-leftBtn[3].onclick = ()=>{left_mover_action();}
+
+
 
 function fetchBest(){
 	let bestTitle = document.getElementsByClassName("best-title");
@@ -262,7 +220,10 @@ function actionCarrousel(){
 }
 actionCarrousel();
 
+
+
 var infoBtns = document.querySelectorAll('.infos-btn');
+var infos = document.querySelector('.infos');
 var arr = Array.prototype.slice.call(infoBtns);
 var modalBackground = document.getElementById('modal-background');
 var closeBtn = document.getElementById('close-btn');
@@ -280,6 +241,35 @@ var modalBoxOffice = document.getElementsByClassName("modal-boxOffice");
 var modalImg = document.getElementsByClassName("modal-img");
 var modalDescription = document.getElementsByClassName("modal-description");
 
+infos.addEventListener('click', function(event){
+	console.log("ça marche")
+	event.preventDefault();
+	modalBackground.style.display = 'block';
+	let movieId = "";
+	fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
+	.then(response => response.json())  
+	.then(data => {
+		movieId = data["results"][0]["id"];
+		fetch("http://localhost:8000/api/v1/titles/"+movieId)
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			modalTitle[0].innerHTML = data["title"];
+			modalgenre[0].innerHTML = data["genres"];
+			modalDate[0].innerHTML = data["year"];
+			modalRate[0].innerHTML = data["rated"];
+			modalImdb[0].innerHTML = data["imdb_score"];
+			modalDuration[0].innerHTML = data["duration"];
+			modalDirector[0].innerHTML = data["directors"];
+			modalActor[0].innerHTML = data["actors"];
+			modalCountry[0].innerHTML = data["countries"];
+			modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+			modalDescription[0].innerHTML = data["description"];
+			modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+		})
+	})
+})
+
 infoBtns.forEach(function (trigger){
 	trigger.addEventListener('click', function(event) {
 		index = arr.indexOf(trigger)
@@ -288,237 +278,61 @@ infoBtns.forEach(function (trigger){
 		modalBackground.style.display = 'block';
 		let movieId = "";
 		let i = "";
+		let urlOfList = "";
+
 		if (index < 7) {
-			if (index <4){
-				i = index + 1;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
-			else {
-				i = index-4;
-				console.log("C1p2");
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=2")
-				.then(response => response.json())  
-				.then(data => {
-					console.log(i);
-					console.log(data);
-					movieId = data["results"][i]["id"];
-					console.log(movieId);
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
+			if (index <4){i = index + 1;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=1";}
+			else {i = index-4;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&sort_by=-imdb_score&page=2";}
 		}
 		else if (index >= 7 && index < 14){
-			
-			if (index < 12){
-				i = index - 7;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=1")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
-			else {
-				i = index - 12;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=2")
-				.then(response => response.json())  
-				.then(data => {
-					console.log(data);
-					console.log(i);
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
+			if (index < 12){i = index - 7;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=1";}
+			else {i = index - 12;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=horror&sort_by=-imdb_score&page=2";}
 		}
 		else if (index >= 14 && index < 21){
-			
-			if (index < 19){
-				i = index - 14;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=1")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-					
-				})
-			}
-			else {
-				i = index - 19;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=2")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
-
-
+			if (index < 19){i = index - 14;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=1";}
+			else {i = index - 19;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=animation&sort_by=-imdb_score&page=2";}
 		}
 		else {
-			
-			if (index < 26){
-				i = index - 21;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=1")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
-			else {
-				i = index - 26;
-				fetch("http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=2")
-				.then(response => response.json())  
-				.then(data => {
-					movieId = data["results"][i]["id"];
-					fetch("http://localhost:8000/api/v1/titles/"+movieId)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						modalTitle[0].innerHTML = data["title"];
-						modalgenre[0].innerHTML = data["genres"];
-						modalDate[0].innerHTML = data["year"];
-						modalRate[0].innerHTML = data["rated"];
-						modalImdb[0].innerHTML = data["imdb_score"];
-						modalDuration[0].innerHTML = data["duration"];
-						modalDirector[0].innerHTML = data["directors"];
-						modalActor[0].innerHTML = data["actors"];
-						modalCountry[0].innerHTML = data["countries"];
-						modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
-						modalDescription[0].innerHTML = data["description"];
-						modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
-					})
-				})
-			}
+			if (index < 26){i = index - 21;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=1";}
+			else {i = index - 26;
+				urlOfList = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&genre=action&sort_by=-imdb_score&page=2";}
 		}
-	});
-
+		fetch(urlOfList)
+		.then(response => response.json())
+		.then(data => {
+			movieId = data["results"][i]["id"];
+			fetch("http://localhost:8000/api/v1/titles/"+movieId)
+			.then(response => response.json())
+			.then(data => {
+				modalTitle[0].innerHTML = data["title"];
+				modalgenre[0].innerHTML = data["genres"];
+				modalDate[0].innerHTML = data["year"];
+				modalRate[0].innerHTML = data["rated"];
+				modalImdb[0].innerHTML = data["imdb_score"];
+				modalDuration[0].innerHTML = data["duration"];
+				modalDirector[0].innerHTML = data["directors"];
+				modalActor[0].innerHTML = data["actors"];
+				modalCountry[0].innerHTML = data["countries"];
+				modalBoxOffice[0].innerHTML = data["worldwide_gross_income"];
+				modalDescription[0].innerHTML = data["description"];
+				modalImg[0].innerHTML = "<img src = '"+ data["image_url"] + "'>";
+			})
+		})
+	})
 	closeBtn.addEventListener('click', function() {
-	modalBackground.style.display = 'none';
+		modalBackground.style.display = 'none';
 	});
-	
+		
 	window.addEventListener('click', function(event) {
 		if (event.target === modalBackground) {
 			modalBackground.style.display = 'none';
 		}
 	});
-});
-
-
+})

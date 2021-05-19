@@ -4,10 +4,10 @@
 .best{
   margin-right: auto;
   margin-left: auto;
-  height: 40vh;
+  height: 70vh;
   width: 90vw;
-  min-width: 400px; min-height: 350px;  
-  max-width: 1500px; max-height: 400px;
+  min-width: 600px; min-height: 380px;  
+  max-width: 1500px; max-height: 500px;
   background-image: url(./Images/background.jpg);
   background-position: center; 
   background-repeat: no-repeat;
@@ -27,48 +27,72 @@
   font-family: "Arial Black";
   font-size: 1.8em;
   text-align: center;
-  height: 10vh;
+  height: 8vh;
   width: 100%;
-  position: relative;
-  top: 4vh;
+  margin-bottom: 0;
 }
     
 .best-description {
   width: 90%;
+  height: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
   align-items: center;
   position: relative;
-  top: -2vh;
 }
   
   .description-text {
-    height: 8vh;
-    width: 50%;
-    margin-right: 5vw;
+    height: 100vh;
+    width: 100vw;
     min-width: 150px; min-height: 200px;  
-    max-width: 1000px; max-height: 250px;  
-    align-items: flex-end;
-    display: table;
+    max-width: 90%; max-height: 250px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
   }
-  .description-text p {
-    width: 60%;
-    margin-right: 20px;
+  .description-text div{
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 25%;
+  }
+  .description-text div p {
+    width: 50%;
+    height: 70%;
     text-align: center;
     font-size: 1.3em;
     font-weight: bold;
     line-height: 8vh;
-    display: table-cell;
-    vertical-align: middle;
   }
 
   .bestFront{
     width: 35vh; height: 50vh;
     max-width: 200px; max-height: 300px;
-    min-width: 150px; min-height: 250px;
+    min-height: 100px;
     object-fit: contain; 
   }
+  @media screen and (max-width: 900px)
+{
+    .bestFront
+    {
+      width: 15vh; height: 30vh;
+      min-width: 70px;
+    }
+    .best-title{
+      font-size: 1.2em;
+    }
+    .description-text div p {
+      font-size: 0.9em;
+      line-height: 4vh;
+      font-weight: bold;
+    } 
+}
 
 .buttons{
   width: 70%;
@@ -76,7 +100,7 @@
   display: flex;
   justify-content: space-evenly;
   position: relative;
-  bottom: 6vh;
+  top: 6%
 }
 .play:hover{
     background-color: #f15fa3;

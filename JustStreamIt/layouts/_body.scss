@@ -64,6 +64,7 @@ body {
 table{
   border-collapse: separate;
   width: 65%;
+  height: 100%;
   table-layout: fixed;
   border-spacing: 0 1% 0 1%;
 }
@@ -72,9 +73,10 @@ table{
 tr {
   font-size: 0.9em;
   padding: 0;
+  min-height: 35px;
 }
 td{
-  padding: 0 2% 0 2%;
+  padding: 0 2% 0 2%;  
 }
 
 .modal-category{

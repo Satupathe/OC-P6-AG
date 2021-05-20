@@ -266,15 +266,6 @@
           box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
 }
 
-.play p {
-  width: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  position: relative;
-  left: 10%;
-  font-size: 0.7em;
-}
-
 .play img {
   width: 20px;
   height: 20px;
@@ -308,16 +299,6 @@
   border-radius: 20px;
   -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
           box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
-}
-
-.infos p {
-  width: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  font-size: 0.7em;
-  padding: auto;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
 }
 
 .infos:hover {

@@ -118,14 +118,6 @@
     border-radius: 20px;
     box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
   }
-
-  .play p {
-      width: auto;
-      object-fit: contain;
-      position: relative;
-      left: 10%;
-      font-size: $button-police;
-  }
   
   .play img {
       width: 20px; height: 20px;
@@ -153,13 +145,6 @@
     box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
   }
 
-  .infos p {
-      width: auto;
-      object-fit: contain;
-      font-size: $button-police;
-      padding: auto;
-      flex-wrap: nowrap;
-  }
 
   .infos:hover{
     background-color: #f15fa3;

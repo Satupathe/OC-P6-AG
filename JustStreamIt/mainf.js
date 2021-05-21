@@ -242,7 +242,6 @@ var modalImg = document.getElementsByClassName("modal-img");
 var modalDescription = document.getElementsByClassName("modal-description");
 
 infos.addEventListener('click', function(event){
-	console.log("ça marche")
 	event.preventDefault();
 	modalBackground.style.display = 'block';
 	let movieId = "";
@@ -253,7 +252,6 @@ infos.addEventListener('click', function(event){
 		fetch("http://localhost:8000/api/v1/titles/"+movieId)
 		.then(response => response.json())
 		.then(data => {
-			console.log(data);
 			modalTitle[0].innerHTML = data["title"];
 			modalgenre[0].innerHTML = data["genres"];
 			modalDate[0].innerHTML = data["year"];
@@ -273,7 +271,6 @@ infos.addEventListener('click', function(event){
 infoBtns.forEach(function (trigger){
 	trigger.addEventListener('click', function(event) {
 		index = arr.indexOf(trigger)
-		console.log(index);
 		event.preventDefault();
 		modalBackground.style.display = 'block';
 		let movieId = "";

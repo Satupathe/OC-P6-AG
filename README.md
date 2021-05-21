@@ -44,7 +44,7 @@ Go to the following repository: https://github.com/OpenClassrooms-Student-Center
 Use instructions in the API's README to install and launch OCMovies-API using your terminal
 
 LAUNCH THE HOMEPAGE:
-In your JustStreamIt repository inside your working repository find juststream.html
+In your JustStreamIt repository inside your working repository find juststreamit.html
 Rightclick on it and then open with
 Choose your browser (Homepage tested on Firefox, Chrome or Edge)
 
